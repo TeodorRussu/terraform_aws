@@ -46,10 +46,20 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     queue_arn = aws_sqs_queue.mopi_queue.arn
     events = [
       "s3:ObjectCreated:*"]
-    #  filter_suffix = ".log"
   }
 }
 
-# CONFIGURE LAMBDA
-
 # CONFIGURE DYNAMODB
+resource "aws_dynamodb_table" "mopi_table" {
+  name             = "mopi_data"
+  hash_key         = "key"
+  billing_mode     = "PAY_PER_REQUEST"
+
+  attribute {
+    name = "key"
+    type = "S"
+  }
+}
+
+
+# CONFIGURE LAMBDA
