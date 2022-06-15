@@ -11,6 +11,6 @@ terraform {
 # CONFIGURE OUR AWS CONNECTION
 provider "aws" {
   shared_credentials_file = "~/.aws/credentials"
-  region                  = "eu-west-1"
-  profile                 = "dev"
+  region                  = "us-east-1"
+  profile                 = "personal"
 }
